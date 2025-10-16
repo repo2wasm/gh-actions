@@ -13,4 +13,4 @@ runs:
     - name: Install repo2wasm
       run: pixi add --pypi repo2wasm
     - name: Create IDE
-      run: pixi exec repo2wasm
+      run: pixi exec repo2wasm test
