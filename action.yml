@@ -16,6 +16,9 @@ runs:
     - name: Create Pixi environment
       shell: bash
       run: pixi init
+    - name: Install Python
+      shell: bash
+      run: pixi add python=3.13
     - name: Install repo2wasm
       shell: bash
       run: pixi add --pypi repo2wasm
