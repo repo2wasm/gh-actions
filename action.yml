@@ -1,0 +1,16 @@
+name: 'repo2wasm'
+description: 'convert a GitHub repository into a Wasm-powered integrated development environment (IDE)'
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v5
+    - uses: prefix-dev/setup-pixi@v0.9.1
+      with:
+        pixi-version: v0.56.0
+        cache: true
+    - name: Create Pixi environment
+      run: pixi init
+    - name: Install repo2wasm
+      run: pixi add --pypi repo2wasm
+    - name: Create IDE
+      run: pixi exec repo2wasm

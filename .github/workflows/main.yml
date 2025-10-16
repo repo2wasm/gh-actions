@@ -1,0 +1,21 @@
+name: Test
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'action.yml'
+jobs:
+  test-github-action:
+    runs-on: ubuntu-24.04
+    name: Test GitHub Action
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create configuration file
+        run: |
+          echo <<EOF > environment.yml
+          name: python
+          dependencies:
+            - numpy
+          EOF
+      - uses: ./
