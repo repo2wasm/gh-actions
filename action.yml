@@ -1,5 +1,8 @@
 name: 'repo2wasm'
 description: 'convert a GitHub repository into a Wasm-powered integrated development environment (IDE)'
+branding:
+  icon: 'terminal'
+  color: 'purple'
 inputs:
   forgiving:
     description: Ignore package version.
