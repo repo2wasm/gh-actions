@@ -56,5 +56,3 @@ runs:
     - name: Publish GitHub pages
       if: inputs.pages
       uses: actions/deploy-pages@v4
-      with:
-        path: ${{ inputs.output }}
