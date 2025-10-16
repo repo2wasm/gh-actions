@@ -7,6 +7,9 @@ inputs:
   forgiving:
     description: Ignore package version.
     default: false
+  python_version:
+    description: Version of Python to use.
+    default: "3.13"
 runs:
   using: "composite"
   steps:
@@ -21,7 +24,7 @@ runs:
       run: pixi init
     - name: Install Python and micromamba
       shell: bash
-      run: pixi add python=3.13 micromamba
+      run: pixi add python=${{ inputs.python_version }} micromamba
     - name: Install repo2wasm
       shell: bash
       run: pixi add --pypi repo2wasm
