@@ -1,5 +1,9 @@
 name: 'repo2wasm'
 description: 'convert a GitHub repository into a Wasm-powered integrated development environment (IDE)'
+inputs:
+  forgiving:
+    description: Ignore package version.
+    default: false
 runs:
   using: "composite"
   steps:
@@ -9,8 +13,18 @@ runs:
         pixi-version: v0.56.0
         cache: true
     - name: Create Pixi environment
+      shell: bash
       run: pixi init
     - name: Install repo2wasm
+      shell: bash
       run: pixi add --pypi repo2wasm
     - name: Create IDE
-      run: pixi exec repo2wasm test
+      shell: bash
+      run: |
+        if [ "${{ inputs.forgiving }}" = "false" ]
+        then
+        export REPO2WASM_FORGIVING=""
+        else
+        export REPO2WASM_FORGIVING="--forgiving"
+        fi
+        pixi exec repo2wasm $REPO2WASM_FORGIVING test
