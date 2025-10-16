@@ -7,6 +7,9 @@ inputs:
   forgiving:
     description: Ignore package version.
     default: false
+  output:
+    description: The name of the output directory to use.
+    default: gh-pages
   python_version:
     description: Version of Python to use.
     default: "3.13"
@@ -40,4 +43,4 @@ runs:
         else
         export REPO2WASM_FORGIVING="--forgiving"
         fi
-        pixi run repo2wasm $REPO2WASM_FORGIVING test
+        pixi run repo2wasm $REPO2WASM_FORGIVING --output-dir "${{ inputs.output }}" test
