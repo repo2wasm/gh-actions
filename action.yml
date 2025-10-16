@@ -10,6 +10,9 @@ inputs:
   output:
     description: The name of the output directory to use.
     default: gh-pages
+  pages:
+    description: Enable publishing IDE to GitHub Actions.
+    default: true
   python_version:
     description: Version of Python to use.
     default: "3.13"
@@ -17,7 +20,8 @@ runs:
   using: "composite"
   steps:
     - uses: actions/checkout@v5
-    - uses: prefix-dev/setup-pixi@v0.9.1
+    - name: Install pixi
+      uses: prefix-dev/setup-pixi@v0.9.1
       with:
         pixi-version: v0.56.0
         cache: false
@@ -44,3 +48,13 @@ runs:
         export REPO2WASM_FORGIVING="--forgiving"
         fi
         pixi run repo2wasm $REPO2WASM_FORGIVING --output-dir "${{ inputs.output }}" test
+    - name: Upload artifact to GitHub
+      if: inputs.pages
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: ${{ inputs.output }}
+    - name: Publish GitHub pages
+      if: inputs.pages
+      uses: actions/deploy-pages@v4
+      with:
+        path: ${{ inputs.output }}

@@ -1,6 +1,6 @@
 # `repo2wasm` as GitHub Action
 
-This is a [GitHub Action](https://github.com/features/actions) to convert a GitHub repository into a Wasm-powered integrated development environment (IDE).
+This is a [GitHub Action](https://github.com/features/actions) to convert a GitHub repository into a Wasm-powered integrated development environment (IDE) and publish it to [GitHub Pages].
 
 ## Usage
 
@@ -15,7 +15,16 @@ on:
 jobs:
   create-ide:
     runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
     steps:
-      - name: Create IDE
+      - name: Create IDE and publish to GitHub Pages
         uses: repo2wasm/gh-actions@0.1.0
 ```
+
+### GitHub Pages
+
+This GitHub Action will, by default, try to publish the IDE to [GitHub Pages] using a [custom GitHub Actions workflow](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow). For this, a manual step is required to select `GitHub Actions` as the "Source" for "Build and deployment" of the website, more details in the [official documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow).
+
+[GitHub Pages]: https://docs.github.com/en/pages

@@ -9,6 +9,9 @@ jobs:
   test-github-action:
     runs-on: ubuntu-24.04
     name: Test GitHub Action
+    permissions:
+      pages: write
+      id-token: write
     steps:
       - uses: actions/checkout@v5
       - uses: ./
