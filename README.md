@@ -17,5 +17,5 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Create IDE
-        uses: repo2wasm/gh-actions
+        uses: repo2wasm/gh-actions@0.1.0
 ```
