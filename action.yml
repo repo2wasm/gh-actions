@@ -53,7 +53,7 @@ runs:
         pixi run repo2wasm $REPO2WASM_FORGIVING --ide "${{ inputs.ide }}" --output-dir "${{ inputs.output }}" test
     - name: Upload artifact to GitHub
       if: inputs.pages
-      uses: actions/upload-pages-artifact@v3
+      uses: actions/upload-pages-artifact@v4
       with:
         path: ${{ inputs.output }}
     - name: Publish GitHub pages
