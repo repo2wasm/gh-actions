@@ -22,6 +22,9 @@ runs:
     - name: Install repo2wasm
       shell: bash
       run: pixi add --pypi repo2wasm
+    - name: Add task
+      shell: bash
+      run: pixi task add repo2wasm repo2wasm
     - name: Create IDE
       shell: bash
       run: |
@@ -31,4 +34,4 @@ runs:
         else
         export REPO2WASM_FORGIVING="--forgiving"
         fi
-        pixi exec repo2wasm $REPO2WASM_FORGIVING test
+        pixi run repo2wasm $REPO2WASM_FORGIVING test
