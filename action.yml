@@ -7,6 +7,9 @@ inputs:
   forgiving:
     description: Ignore package version.
     default: false
+  ide:
+    description: The IDE to configure.
+    default: jupyterlab
   output:
     description: The name of the output directory to use.
     default: gh-pages
@@ -47,7 +50,7 @@ runs:
         else
         export REPO2WASM_FORGIVING="--forgiving"
         fi
-        pixi run repo2wasm $REPO2WASM_FORGIVING --output-dir "${{ inputs.output }}" test
+        pixi run repo2wasm $REPO2WASM_FORGIVING --ide "${{ inputs.ide }}" --output-dir "${{ inputs.output }}" test
     - name: Upload artifact to GitHub
       if: inputs.pages
       uses: actions/upload-pages-artifact@v3
