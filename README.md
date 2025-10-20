@@ -27,6 +27,7 @@ jobs:
 
 | Input | Required | Default | Description |
 | --- | --- | --- | --- |
+| `input` | `false` | `.` | The name of the input directory to use. |
 | `forgiving` | `false` | `false` | Ignore package version. |
 | `ide` | `false` | `jupyterlab` | The IDE to configure. |
 | `output` | `false` | `gh-pages` | The name of the output directory to use. |

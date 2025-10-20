@@ -4,6 +4,9 @@ branding:
   icon: 'terminal'
   color: 'purple'
 inputs:
+  input:
+    description: The name of the input directory to use.
+    default: "."
   forgiving:
     description: Ignore package version.
     default: false
@@ -50,7 +53,7 @@ runs:
         else
         export REPO2WASM_FORGIVING="--forgiving"
         fi
-        pixi run repo2wasm $REPO2WASM_FORGIVING --ide "${{ inputs.ide }}" --output-dir "${{ inputs.output }}" test
+        pixi run repo2wasm $REPO2WASM_FORGIVING --ide "${{ inputs.ide }}" --output-dir "${{ inputs.output }}" "${{ inputs.input }}"
     - name: Upload artifact to GitHub
       if: inputs.pages
       uses: actions/upload-pages-artifact@v3
