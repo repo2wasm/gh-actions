@@ -33,6 +33,7 @@ jobs:
 | `output` | `false` | `gh-pages` | The name of the output directory to use. |
 | `pages` | `false` | `true` | Enable publishing IDE to GitHub Actions. |
 | `python_version` | `false` | `3.13` | Version of Python to use. |
+| `pixi_version` | `false` | `v0.59.0` | Version of Pixi to use. |
 
 ### GitHub Pages
 
